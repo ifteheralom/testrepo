@@ -42,6 +42,8 @@ let trusted_list_sp3 = [];
 let code_store = [];
 
 app.post('/storecode', (req, res) => {
+        console.log('POST postcode : ', req.body);
+
 	let spentityid = req.body.spentityid;
         let idpentityid = req.body.idpentityid;
         
@@ -55,15 +57,16 @@ app.post('/storecode', (req, res) => {
                         item. spcode = req.body.spcode;
                         item. spcheck = req.body.spcheck;
                         item. idpcheck = req.body.idpcheck;
+                        item. author = req.body.author;
                         return item;
                 }
                 
         });
         if(result == undefined) {
-                console.log('new entry', req.body);
+                console.log('new entry');
                 code_store.push(req.body);
         }
-        console.log('POST postcode : ', code_store);
+        
         res.send('success');
 });
 
@@ -74,7 +77,23 @@ app.get('/codefetch', (req, res) => {
 
 	let result = code_store.find(item => item.spentityid == spentityid);
 	console.log('GET getcode : ', result);
-	res.send(result.code);
+        
+        res.send(result);
+});
+
+app.get('/approval', (req, res) => {
+	
+	let author = req.query.author;
+
+        let result = []; 
+        code_store.find(item => {
+                if(item.author == author){
+                        result.push(item);
+                }
+        });
+	console.log('GET getcode : ', result);
+        
+        res.send(result);
 });
 
 app.get('/tallistfetch', (req, res) => {
