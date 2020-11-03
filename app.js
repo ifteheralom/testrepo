@@ -41,12 +41,7 @@ let trusted_list_sp3 = [];
 
 let code_store = [];
 
-app.post('/storecode', (req, res) => {
-	let spentityid = req.body.spentityid;
-        let idpentityid = req.body.idpentityid;
-        let idpcode = req.body.idpcode;
-        let spcode = req.body.spcode;
-        
+app.post('/storecode', (req, res) => {        
         let result = code_store.find(item => {
                 if(item.spentityid == spentityid){
                         console.log('updating entry');
@@ -60,7 +55,7 @@ app.post('/storecode', (req, res) => {
                 }
                 return item;
         });
-        if(!result) {
+        if(result === undefined) {
                 console.log('new entry');
                 code_store.push(req.body);
         }
