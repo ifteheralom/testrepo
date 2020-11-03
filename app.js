@@ -58,9 +58,10 @@ app.post('/storecode', (req, res) => {
                 }
                 return item;
         });
-	if(!result) code_store.push(req.body);
-	console.log('POST postcode : ', req.body);
-	res.send('success');
+        if(!result) code_store.push(req.body);
+        console.log('POST postcode : ', req.body);
+        console.log(code_store);	
+        res.send('success');
 });
 
 app.get('/codefetch', (req, res) => {
