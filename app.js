@@ -87,7 +87,7 @@ app.get('/approval', (req, res) => {
 
         let result = []; 
         code_store.find(item => {
-                if(item.author == author){
+                if(item.author == author || item.consent == author){
                         result.push(item);
                 }
         });
