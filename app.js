@@ -46,10 +46,10 @@ app.post('/storecode', (req, res) => {
         let idpentityid = req.body.idpentityid;
         let idpcode = req.body.idpcode;
 	let spcode = req.body.spcode;
-	code_store.push({
-		spentityid: body.spentityid, code: body.idpcode
-	});
-	console.log('POST postcode : ', code_store);
+	// code_store.push({
+	// 	spentityid: body.spentityid, code: body.idpcode
+        // });
+	console.log('POST postcode : ', req.body);
 	res.send('success');
 });
 
