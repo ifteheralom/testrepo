@@ -52,13 +52,15 @@ app.post('/storecode', (req, res) => {
                         
                         item. spentityid = req.body.spentityid;
                         item. idpentityid = req.body.idpentityid;
-                        item. idpcode = req.body.idpcode;
-                        item. spcode = req.body.spcode;
+                        
                         item. spcheck = req.body.spcheck;
                         item. idpcheck = req.body.idpcheck;
+                        
+                        (item. spcode == 0) ? req.body.spcode : item. spcode;
+                        (item. idpcode == 0) ? req.body.idpcode : item. idpcode;
+                        
                         return item;
                 }
-                
         });
         if(result == undefined) {
                 console.log('new entry');
