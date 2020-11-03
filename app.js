@@ -49,6 +49,8 @@ app.post('/storecode', (req, res) => {
         
         let result = code_store.find(item => {
                 if(item.spentityid == spentityid){
+                        console.log('updating entry');
+                        
                         item. spentityid = req.body.spentityid;
                         item. idpentityid = req.body.idpentityid;
                         item. idpcode = req.body.idpcode;
@@ -58,10 +60,11 @@ app.post('/storecode', (req, res) => {
                 }
                 return item;
         });
-        if(!result) code_store.push(req.body);
-        console.log('POST postcode : ', req.body);
-        console.log(code_store);
-        console.log(result);	
+        if(!result) {
+                console.log('new entry');
+                code_store.push(req.body);
+        }
+        console.log('POST postcode : ', code_store);
         res.send('success');
 });
 
