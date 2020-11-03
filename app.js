@@ -60,7 +60,8 @@ app.post('/storecode', (req, res) => {
         });
         if(!result) code_store.push(req.body);
         console.log('POST postcode : ', req.body);
-        console.log(code_store);	
+        console.log(code_store);
+        console.log(result);	
         res.send('success');
 });
 
