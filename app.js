@@ -45,10 +45,10 @@ app.post('/storecode', (req, res) => {
         console.log('POST postcode : ', req.body);
 
 	let spentityid = req.body.spentityid;
-        let idpentityid = req.body.idpentityid;
+        let author = req.body.author;
         
         let result = code_store.find(item => {
-                if(item.spentityid == spentityid){
+                if(item.spentityid == spentityid && item.author == author){
                         console.log('updating entry');
                         
                         item. spentityid = req.body.spentityid;
@@ -91,7 +91,7 @@ app.get('/approval', (req, res) => {
                         result.push(item);
                 }
         });
-	console.log('GET getcode : ', result);
+	console.log('GET approval : ', result);
         
         res.send(result);
 });
