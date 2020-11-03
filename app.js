@@ -45,10 +45,20 @@ app.post('/storecode', (req, res) => {
 	let spentityid = req.body.spentityid;
         let idpentityid = req.body.idpentityid;
         let idpcode = req.body.idpcode;
-	let spcode = req.body.spcode;
-	// code_store.push({
-	// 	spentityid: body.spentityid, code: body.idpcode
-        // });
+        let spcode = req.body.spcode;
+        
+        let result = code_store.find(item => {
+                if(item.spentityid == spentityid){
+                        item. spentityid = req.body.spentityid;
+                        item. idpentityid = req.body.idpentityid;
+                        item. idpcode = req.body.idpcode;
+                        item. spcode = req.body.spcode;
+                        item. spcheck = req.body.spcheck;
+                        item. idpcheck = req.body.idpcheck;
+                }
+                return item;
+        });
+	if(!result) code_store.push(req.body);
 	console.log('POST postcode : ', req.body);
 	res.send('success');
 });
