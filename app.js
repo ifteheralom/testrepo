@@ -45,10 +45,9 @@ app.post('/storecode', (req, res) => {
         console.log('POST postcode : ', req.body);
 
 	let spentityid = req.body.spentityid;
-        let author = req.body.author;
         
         let result = code_store.find(item => {
-                if(item.spentityid == spentityid && item.author == author){
+                if(item.spentityid == spentityid){
                         console.log('updating entry');
                         
                         item. spentityid = req.body.spentityid;
@@ -57,7 +56,6 @@ app.post('/storecode', (req, res) => {
                         item. spcode = req.body.spcode;
                         item. spcheck = req.body.spcheck;
                         item. idpcheck = req.body.idpcheck;
-                        item. author = req.body.author;
                         return item;
                 }
                 
@@ -87,7 +85,7 @@ app.get('/approval', (req, res) => {
 
         let result = []; 
         code_store.find(item => {
-                if(item.author == author || item.consent == author){
+                if(item.spentityid == author || item.idpentityid == author){
                         result.push(item);
                 }
         });
