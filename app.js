@@ -56,8 +56,12 @@ app.post('/storecode', (req, res) => {
                         item. spcheck = req.body.spcheck;
                         item. idpcheck = req.body.idpcheck;
                         
-                        (item. spcode == 0) ? req.body.spcode : item. spcode;
-                        (item. idpcode == 0) ? req.body.idpcode : item. idpcode;
+                        if(req.body.author == 'sp'){
+                                item. spcode = req.body.spcode;
+                        }
+                        else if(req.body.author == 'idp'){
+                                item. idpcode = req.body.idpcode;
+                        }
                         
                         return item;
                 }
