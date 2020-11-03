@@ -55,11 +55,12 @@ app.post('/storecode', (req, res) => {
                         item. spcode = req.body.spcode;
                         item. spcheck = req.body.spcheck;
                         item. idpcheck = req.body.idpcheck;
+                        return item;
                 }
-                return item;
+                
         });
         if(result == undefined) {
-                console.log('new entry');
+                console.log('new entry', req.body);
                 code_store.push(req.body);
         }
         console.log('POST postcode : ', code_store);
