@@ -176,9 +176,9 @@ app.post('/storetallist', (req, res) => {
 	let entityId = req.body.entityId;
         let tal = req.body.tal;
 
-    	console.log('POST storetallist: ', entityId, req.body);	
-
-	if(entityId === 'sp1'){
+        console.log('POST storetallist: ', entityId, req.body);	
+        
+        if(entityId === 'sp1'){
 		trusted_list_sp1.push(tal);
 	} 
 	else if(entityId === 'sp2'){
@@ -189,6 +189,27 @@ app.post('/storetallist', (req, res) => {
         }
 	else if(entityId === 'idp'){
                 trusted_list_idp.push(tal);       
+	}	
+      	res.send('success');
+});
+app.post('/removetallist', (req, res) => {
+    	
+	let entityId = req.body.entityId;
+        let tal = req.body.tal;
+
+    	console.log('POST removetallist: ', entityId, req.body);	
+
+        if(entityId === 'sp1'){
+		trusted_list_sp1 = trusted_list_sp1.filter(item => item != tal);
+	} 
+	else if(entityId === 'sp2'){
+                trusted_list_sp2 = trusted_list_sp2.filter(item => item != tal);
+        } 
+	else if(entityId === 'sp3'){
+                trusted_list_sp3 = trusted_list_sp3.filter(item => item != tal);
+        }
+	else if(entityId === 'idp'){
+                trusted_list_idp = trusted_list_idp.filter(item => item != tal); 
 	}
       	res.send('success');
 });
