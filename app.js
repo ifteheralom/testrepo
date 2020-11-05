@@ -52,10 +52,11 @@ idpcode: '380740' }];
 app.post('/storecode', (req, res) => {
         console.log('POST postcode : ', req.body);
 
-	let spentityid = req.body.spentityid;
+        let spentityid = req.body.spentityid;
+        let idpentityid = req.body.idpentityid;
         
         let result = code_store.find(item => {
-                if(item.spentityid == spentityid){
+                if(item.spentityid == spentityid && item.idpentityid == idpentityid){
                         console.log('updating entry');
                         
                         item. spentityid = req.body.spentityid;
@@ -90,14 +91,14 @@ app.get('/codefetch', (req, res) => {
         let author = req.query.author;
 
         let result = code_store.find(item => {
-                if(item.spentityid == spentityid){
+                if(item.spentityid == spentityid && item.idpentityid == idpentityid){
                         console.log('code check: ',  author);
                         console.log(item);
                         
-                        if(req.body.author == 'sp' && item.spcode == req.body.spcode){
+                        if(req.body.author == 'sp' && item.spcode == code){
                                 res.send('sp-success');
                         }
-                        else if(req.body.author == 'idp' &&item.idpcode == req.body.idpcode){
+                        else if(req.body.author == 'idp' &&item.idpcode == code){
                                 res.send('idp-success');
                         }
                 }
