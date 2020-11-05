@@ -126,6 +126,26 @@ app.get('/approval', (req, res) => {
         res.send(result);
 });
 
+app.get('/removeapproval', (req, res) => {
+	
+	let spentityid = req.query.spentityid;
+        let idpentityid = req.query.idpentityid;
+
+        let result = []; 
+
+        for(let item in code_store){
+                if(item.spentityid == spentityid && item.idpentityid == idpentityid){
+                        continue;
+                } else {
+                        result.push(item);
+                }
+        }
+        code_store = result;
+	console.log('GET remove approval : ', result);
+        
+        res.send(result);
+});
+
 app.get('/tallistfetch', (req, res) => {
 	let entityId = req.query.entityId;
 	console.log('GET : ' + entityId);
