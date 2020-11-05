@@ -95,10 +95,10 @@ app.get('/codefetch', (req, res) => {
                         console.log('code check: ',  author);
                         console.log(item);
                         
-                        if(req.body.author == 'sp' && item.spcode == code){
+                        if(item.author == 'sp' && item.spcode == code){
                                 res.send('sp-success');
                         }
-                        else if(req.body.author == 'idp' &&item.idpcode == code){
+                        else if(item.author == 'idp' && item.idpcode == code){
                                 res.send('idp-success');
                         }
                 }
