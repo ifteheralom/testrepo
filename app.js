@@ -94,14 +94,14 @@ app.get('/codefetch', (req, res) => {
         let result = code_store.find(item => {
                 if(item.spentityid == spentityid && item.idpentityid == idpentityid){
                         console.log('code check: ',  author);
-                        console.log(item);
-                        console.log(req.query);
+                        // console.log(item);
+                        // console.log(req.query);
                         
-                        if(item.author == 'sp' && item.spcode == code){
+                        if(author == 'sp' && item.spcode == code){
                                 item.spcheck = 'success'; flag = 1;
                                 res.send('sp-success');
                         }
-                        else if(item.author == 'idp' && item.idpcode == code){
+                        else if(author == 'idp' && item.idpcode == code){
                                 item.idpcheck = 'success'; flag = 1;
                                 res.send('idp-success');
                         }
