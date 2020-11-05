@@ -84,6 +84,7 @@ app.get('/codefetch', (req, res) => {
         let result = code_store.find(item => {
                 if(item.spentityid == spentityid){
                         console.log('code check: ',  author);
+                        console.log(item);
                         
                         if(req.body.author == 'sp' && item.spcode == req.body.spcode){
                                 res.send('sp-success');
