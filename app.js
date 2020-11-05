@@ -39,7 +39,15 @@ let trusted_list_sp2 = [
 ];
 let trusted_list_sp3 = [];
 
-let code_store = [];
+let code_store = [{ spcode: '771057',
+spentityid:
+ 'http://sp3.sust.com/simplesaml/module.php/saml/sp/metadata.php/default-sp',
+idpentityid: 'http://idp.sust.com/simplesaml/saml2/idp/metadata.php',
+dynamicfed: 'dynamicfed',
+author: 'sp',
+spcheck: 'pending',
+idpcheck: 'pending',
+idpcode: '380740' }];
 
 app.post('/storecode', (req, res) => {
         console.log('POST postcode : ', req.body);
