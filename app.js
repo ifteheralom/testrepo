@@ -96,9 +96,11 @@ app.get('/codefetch', (req, res) => {
                         console.log(item);
                         
                         if(item.author == 'sp' && item.spcode == code){
+                                item.spcheck = 'success';
                                 res.send('sp-success');
                         }
                         else if(item.author == 'idp' && item.idpcode == code){
+                                item.idpcheck = 'success';
                                 res.send('idp-success');
                         }
                 }
