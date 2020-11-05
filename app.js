@@ -95,6 +95,7 @@ app.get('/codefetch', (req, res) => {
                 if(item.spentityid == spentityid && item.idpentityid == idpentityid){
                         console.log('code check: ',  author);
                         console.log(item);
+                        console.log(req.query);
                         
                         if(item.author == 'sp' && item.spcode == code){
                                 item.spcheck = 'success'; flag = 1;
