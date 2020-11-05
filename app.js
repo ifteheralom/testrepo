@@ -89,6 +89,7 @@ app.get('/codefetch', (req, res) => {
         let idpentityid = req.query.idpentityid;
         let code = req.query.code;
         let author = req.query.author;
+        let flag = 0;
 
         let result = code_store.find(item => {
                 if(item.spentityid == spentityid && item.idpentityid == idpentityid){
@@ -96,17 +97,17 @@ app.get('/codefetch', (req, res) => {
                         console.log(item);
                         
                         if(item.author == 'sp' && item.spcode == code){
-                                item.spcheck = 'success';
+                                item.spcheck = 'success'; flag = 1;
                                 res.send('sp-success');
                         }
                         else if(item.author == 'idp' && item.idpcode == code){
-                                item.idpcheck = 'success';
+                                item.idpcheck = 'success'; flag = 1;
                                 res.send('idp-success');
                         }
                 }
         });
         
-        res.send('code-failed');
+        (flag) ? res.end() : res.send('code-failed');
 });
 
 app.get('/approval', (req, res) => {
