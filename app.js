@@ -156,7 +156,7 @@ app.post('/storetallist', (req, res) => {
 	let entityId = req.body.entityId;
         let tal = req.body.tal;
 
-    	console.log('POST : ', entityId, body);	
+    	console.log('POST storetallist: ', entityId, body);	
 
 	if(entityId === 'sp1'){
 		trusted_list_sp1.push(tal);
