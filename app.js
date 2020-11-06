@@ -38,6 +38,7 @@ let trusted_list_sp2 = [
   "http://idp.sust.com/simplesaml/saml2/idp/metadata.php",
 ];
 let trusted_list_sp3 = [];
+let trusted_list_sp4 = [];
 
 let code_store = [{ spcode: '771057',
 spentityid:
@@ -161,6 +162,9 @@ app.get('/tallistfetch', (req, res) => {
 	else if(entityId === 'sp3'){
                 res.send(trusted_list_sp3);
         } 
+        else if(entityId === 'sp4'){
+                res.send(trusted_list_sp4);
+        } 
 	else if(entityId === 'code'){
                 res.send(trusted_list_code);
         }
@@ -187,6 +191,9 @@ app.post('/storetallist', (req, res) => {
 	else if(entityId === 'sp3'){
                 trusted_list_sp3.push(tal);
         }
+        else if(entityId === 'sp4'){
+                trusted_list_sp4.push(tal);
+        }
 	else if(entityId === 'idp'){
                 trusted_list_idp.push(tal);       
 	}	
@@ -207,6 +214,9 @@ app.post('/removetallist', (req, res) => {
         } 
 	else if(entityId === 'sp3'){
                 trusted_list_sp3 = trusted_list_sp3.filter(item => item != tal);
+        }
+        else if(entityId === 'sp4'){
+                trusted_list_sp4 = trusted_list_sp4.filter(item => item != tal);
         }
 	else if(entityId === 'idp'){
                 trusted_list_idp = trusted_list_idp.filter(item => item != tal); 
