@@ -134,14 +134,7 @@ app.get('/removeapproval', (req, res) => {
 
         let result = []; 
 
-        for(let item in code_store){
-                if(item.spentityid == spentityid && item.idpentityid == idpentityid){
-                        continue;
-                } else {
-                        result.push(item);
-                }
-        }
-        code_store = result;
+        code_store = code_store.filter)(item => item.spentityid == spentityid && item.idpentityid == idpentityid);
 	console.log('GET remove approval : ', result);
         
         res.send(result);
