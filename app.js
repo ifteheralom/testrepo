@@ -128,14 +128,14 @@ app.get('/approval', (req, res) => {
 });
 
 app.get('/removeapproval', (req, res) => {
-	
+	console.log('GET remove approval : ', req.query);
 	let spentityid = req.query.spentityid;
         let idpentityid = req.query.idpentityid;
 
         let result = []; 
 
         code_store = code_store.filter(item => item.spentityid != spentityid && item.idpentityid != idpentityid);
-	console.log('GET remove approval : ', result);
+	console.log('GET remove approval : ', code_store);
         
         res.send(result);
 });
